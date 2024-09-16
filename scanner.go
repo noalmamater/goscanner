@@ -26,7 +26,17 @@ func scanPort(target string, port int, wg *sync.WaitGroup, sem chan struct{}) {
 }
 
 func main() {
+	if os.Args[1] == "--help" {
+		fmt.Printf("goscanner - A fast and lightweight portscanner build with multithreading\n")
+		fmt.Printf("\n")
+		fmt.Printf("Usage: goscanner [target IP]\n")
+		fmt.Printf("\n")
+		fmt.Printf("--help to see this screen")
+		return
+	}
+
 	targetIp := os.Args[1]
+
 	startPort := 1
 	endPort := 65535
 
